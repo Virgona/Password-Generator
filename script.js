@@ -5,6 +5,7 @@ var wordsLower = "abcdefghijklmnopqrstuvwxyz";
 var numbers = "0123456789";
 var special = "!#$%^&*(),-:;<>+=?}{][_|`~";
 var allowedChar = " ";
+var usersPersonalPassword = " ";
 
 // Write password to the #password input
 function writePassword() {
@@ -15,7 +16,7 @@ function writePassword() {
   // sanity check
   console.log(passwordLengthAsString);
   // if the user password gives hits cancel (passwordLenghtAsString === null) or if is and empty string (=== "") return
-
+  
 
 
 
@@ -36,30 +37,32 @@ function writePassword() {
   // how do we use this data to create a x long password containing the chosen chars
   
   // decide which char the user selected and dump(concatenate) them into a big string
-  if (isUpperCaseSelected && isLowerCaseSelected && isSpecialCharSelected && isNumbersSelected){
-    allowedChar = wordsUpper + wordsLower + numbers + special
-  }
+  if (isUpperCaseSelected === true){
+    allowedChar += wordsUpper
+  } 
+  if (isLowerCaseSelected === true){
+    allowedChar += wordsLower
+  } 
+  if (isSpecialCharSelected === true){
+    allowedChar += special
+  } 
+  if (isNumbersSelected === true){
+    allowedChar += numbers
+  } else allowedChar += " ";
   //sanity check
   console.log(allowedChar);
 
   for (var i = 0; i < passwordLength; i++)
-    password += allowedChar.charAt(math.floor(math.random()* allowedChar.length));
+    usersPersonalPassword += allowedChar.charAt(Math.floor(Math.random()* allowedChar.length));
 
-    console.log(password);
+    console.log(usersPersonalPassword);
   
-  // for each req char (password length)
-  // -- pick a random char from allowed char
+  // document.getElementById("password")
+  // p.textContent = usersPersonalPassword;
 
-  // if (v = !numbers())
-  // {
-  //   return;
-  // }
-  // if (v = numbers()){
-  // }
-  //  };
-  // var passwordText = document.querySelector("#password");
+  passwordText = document.querySelector("#password");
 
-  // passwordText.value = password;
+  passwordText.value = usersPersonalPassword;
 
 }
 
