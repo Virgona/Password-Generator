@@ -7,36 +7,32 @@ var special = "!#$%^&*(),-:;<>+=?}{][_|`~";
 var allowedChar = " ";
 var usersPersonalPassword = " ";
 
-// Write password to the #password input
+
 function writePassword() {
-  // var password = generatePassword()
-  // {
-  // ask the user how many chars they want
+
   var passwordLengthAsString = prompt("Specify password character length (between 8 - 128 characters)");
-  // sanity check
-  console.log(passwordLengthAsString);
-  // if the user password gives hits cancel (passwordLenghtAsString === null) or if is and empty string (=== "") return
+  //resets if users clicks cancel
+  if (!passwordLengthAsString){
+    return;
+  }
+  // resets and sends error if users selects invalid characters
+  if (passwordLengthAsString < 8 || passwordLengthAsString > 128){
+
+    alert("Characters do not meet specifications");
+    return;
+
+  }
   
-
-
-
   // convert that answer to a number
   var passwordLength = parseInt(passwordLengthAsString);
 
-  // sanity checky
-  console.log(passwordLength)
-
-
+  // getting user input. Customizing their password
   var isUpperCaseSelected = confirm("Include upper case?");
   var isLowerCaseSelected = confirm("Include lower case?");
   var isNumbersSelected = confirm("Include numbers?");
   var isSpecialCharSelected = confirm("Inculde special characters?");
-  // prove ok or cancel from confirm gives a boolean
-  console.log(isUpperCaseSelected, isLowerCaseSelected, isNumbersSelected, isSpecialCharSelected)
-
-  // how do we use this data to create a x long password containing the chosen chars
   
-  // decide which char the user selected and dump(concatenate) them into a big string
+  // sorting user inputs so that they are either entered into a new variable or not
   if (isUpperCaseSelected === true){
     allowedChar += wordsUpper
   } 
@@ -48,21 +44,23 @@ function writePassword() {
   } 
   if (isNumbersSelected === true){
     allowedChar += numbers
-  } else allowedChar += " ";
-  //sanity check
-  console.log(allowedChar);
+  } if (!isLowerCaseSelected || !isUpperCaseSelected || !isSpecialCharSelected || !isNumbersSelected){ 
+    allowedChar += " ";
+  }
+  if (allowedChar == 0){
+    alert("You must pick from at least one option for a password to generate");
+    return;
+  }
 
+  // looping over the length that the user requested to define the length of their unique password. Then randomly selecting the characters from the new variable defined above
   for (var i = 0; i < passwordLength; i++)
     usersPersonalPassword += allowedChar.charAt(Math.floor(Math.random()* allowedChar.length));
-
-    console.log(usersPersonalPassword);
-  
-  // document.getElementById("password")
-  // p.textContent = usersPersonalPassword;
 
   passwordText = document.querySelector("#password");
 
   passwordText.value = usersPersonalPassword;
+
+  
 
 }
 
