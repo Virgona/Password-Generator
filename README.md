@@ -19,4 +19,6 @@ This week I used my first tutoring session and Byron really helped me in that he
 This link will take you to the webpage where you too can get your own unique password. Just click generate and follow the steps! 
 Unfortunately if you want a second password you will need to refresh the page - one thing I couldnt figure out was getting the generate button to also erase the last generated code!
 
-Link: 
+Link: https://github.com/Virgona/Password-Generator.git
+
+![Password Generator](./passwordGenerator.png)
